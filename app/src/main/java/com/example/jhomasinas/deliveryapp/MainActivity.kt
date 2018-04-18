@@ -1,6 +1,7 @@
 package com.example.jhomasinas.deliveryapp
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
@@ -33,9 +34,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.toast
-import org.jetbrains.anko.uiThread
+import org.jetbrains.anko.*
 import java.io.IOException
 import java.net.URL
 
@@ -68,6 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var locationCallback : LocationCallback
     private lateinit var locationRequest  : LocationRequest
     private var locationUpdateState = false
+    private var progressDialog: ProgressDialog? = null
 
 
 
@@ -91,9 +91,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 super.onLocationResult(p0)
                 lastLocation = p0.lastLocation
                 map.clear()
-                if(currentLatLng == null){
-                    setUpMap()
-                }
                 placeMarkerOnMap(LatLng(lastLocation.latitude,lastLocation.longitude))
             }
         }
@@ -121,8 +118,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_camera -> {
-                val fragment = ItemsFragment()
-                addFragment(fragment)
+                startActivityForResult(intentFor<OrderList>(),60)
             }
             R.id.nav_gallery -> {
 
@@ -264,9 +260,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    private fun drawRoute(current: LatLng , place : LatLng){
-
-        val LatLongB = LatLngBounds.Builder()
+   private fun drawRoute(current: LatLng , place : LatLng){
+       progressDialog = indeterminateProgressDialog("Calculating Route")
+       progressDialog?.setCancelable(false)
+       progressDialog?.show()
+       val LatLongB = LatLngBounds.Builder()
 
         val options = PolylineOptions()
         options.color(Color.RED)
@@ -294,9 +292,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val bounds = LatLongB.build()
                 map.addPolyline(options)
                 map.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds,100))
+                progressDialog?.dismiss()
             }
         }
     }
+
+
 
     private fun startLocationUpdates(){
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
@@ -352,7 +353,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
        supportFragmentManager
                .beginTransaction()
                .setCustomAnimations(R.anim.abc_slide_in_top,R.anim.abc_slide_out_bottom)
-               .replace(R.id.content,fragment,fragment.javaClass.simpleName)
+               .replace(R.id.content_main,fragment,fragment.javaClass.simpleName)
                .commit()
     }
 

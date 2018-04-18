@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.ActivityCompat
 import android.util.Log
-import com.beust.klaxon.*
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.location.*
 import com.google.android.gms.location.places.ui.PlacePicker
@@ -134,7 +133,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 var addressText = place.name.toString()
                 addressText += "\n" + place.address.toString()
                 placeMarkerOnMap(place.latLng)
-                drawRoute(currentLatLng!!,place.latLng)
+                // drawRoute(currentLatLng!!,place.latLng)
             }
         }
     }
@@ -186,7 +185,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
     }
 
-    private fun drawRoute(current: LatLng , place : LatLng){
+   /* private fun drawRoute(current: LatLng , place : LatLng){
 
         val LatLongB = LatLngBounds.Builder()
 
@@ -218,5 +217,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                     map.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds,100))
             }
         }
-    }
+    }*/
 }

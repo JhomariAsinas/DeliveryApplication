@@ -1,11 +1,11 @@
 package com.example.jhomasinas.deliveryapp.Config
 
 import com.example.jhomasinas.deliveryapp.Model.Order
-import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
@@ -15,7 +15,7 @@ import retrofit2.http.GET
 interface OrderApi {
 
     @GET("admin/GetOrder")
-        fun getOrder(): Observable<List<Order>>
+        fun getOrder(): Call<OrderResponse>
 
 
     companion object {

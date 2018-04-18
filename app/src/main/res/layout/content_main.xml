@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    android:id="@+id/content"
+<FrameLayout
+    android:id="@+id/content_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,4 +28,4 @@
 
 
 
-</android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

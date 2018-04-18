@@ -4,11 +4,5 @@
     android:layout_height="match_parent"
     tools:context="com.example.jhomasinas.deliveryapp.Fragment.ItemsFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerOrder"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
