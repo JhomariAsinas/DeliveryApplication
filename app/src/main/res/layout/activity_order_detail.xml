@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jhomasinas.deliveryapp.OrderDetail">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="750dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/cantora_one"
+                android:text="Customer Name:"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/customerName"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:layout_above="@+id/textView3"
+                android:layout_alignStart="@+id/customAddress"
+                android:maxLines="1"
+                android:text="Jhomari B. Asiñas"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:minTextSize="8sp"
+                app:sizeToFit="true" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_below="@+id/textView2"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/cantora_one"
+                android:text="Customer Address:"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/customAddress"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_alignStart="@+id/customerContact"
+                android:layout_alignTop="@+id/textView3"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:text="Ermin Garcia St. Cubao Quezon City"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:minTextSize="8sp"
+                app:sizeToFit="true" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView3"
+                android:layout_below="@+id/customAddress"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/cantora_one"
+                android:text="Customer Contact No:"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/customerContact"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView4"
+                android:layout_alignBottom="@+id/textView4"
+                android:layout_toEndOf="@+id/items"
+                android:text="0921025533"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/items"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView4"
+                android:layout_below="@+id/textView4"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/cantora_one"
+                android:text="Items to Deliver:"
+                android:textAlignment="viewStart"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/items"
+                android:layout_marginTop="12dp"
+                android:nestedScrollingEnabled="false">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+        </RelativeLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

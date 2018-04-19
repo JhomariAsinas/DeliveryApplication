@@ -79,8 +79,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map2) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
         createLocationRequest()
+
         val fab = findViewById<FloatingActionButton>(R.id.fab2)
         fab.setOnClickListener {
             loadPlacePicker()
@@ -209,6 +212,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             if(resultCode == Activity.RESULT_OK){
                 locationUpdateState = true
                 startLocationUpdates()
+                setUpMap()
             }
         }
     }
@@ -349,12 +353,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    fun addFragment(fragment: Fragment){
-       supportFragmentManager
-               .beginTransaction()
-               .setCustomAnimations(R.anim.abc_slide_in_top,R.anim.abc_slide_out_bottom)
-               .replace(R.id.content_main,fragment,fragment.javaClass.simpleName)
-               .commit()
-    }
 
 }

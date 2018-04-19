@@ -14,12 +14,12 @@ import retrofit2.http.GET
  */
 interface OrderApi {
 
-    @GET("admin/GetOrder")
+    @GET("admin/getOrderCash")
         fun getOrder(): Call<OrderResponse>
 
 
     companion object {
-        val BASE_URL = "https://192.168.1.50/mobilecom/"
+        val BASE_URL = "http://192.168.1.50/mobilecom/"
         fun create(): OrderApi {
             val retrofit = Retrofit.Builder()
                     .baseUrl(BASE_URL)
